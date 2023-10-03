@@ -3,7 +3,7 @@
 <div class="modal" id="{{$id}}" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            <form>
+            <form action="{{ route('user-create') }}" method="POST">
                 @csrf
                 <div class="modal-header">
                     <h5 class="modal-title">
@@ -14,15 +14,15 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" required>
+                        <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="mb-3">
                         <label for="age" class="form-label">Age</label>
-                        <input type="number" class="form-control" id="age" required>
+                        <input type="number" class="form-control" id="age" name="age" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="name@example.com" required>
+                        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -49,6 +49,5 @@
             ageInput.value = null;
             emailInput.value = '';
         });
-
     </script>
 @endpushonce

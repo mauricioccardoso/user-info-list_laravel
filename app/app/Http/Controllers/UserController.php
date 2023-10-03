@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserStoreRequest;
 use App\Models\User;
 use App\Services\UserDataMocky;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -21,5 +23,21 @@ class UserController extends Controller
         return view('users',[
             'users' => $users
         ]);
+    }
+
+    public function store(UserStoreRequest $request)
+    {
+        DB::beginTransaction();
+        try {
+            User::create($request->all());
+
+            DB::commit();
+        } catch (\Throwable $errors) {
+            DB::rollBack();
+
+            return redirect()->back()->with($errors);
+        }
+
+        return redirect()->back();
     }
 }
