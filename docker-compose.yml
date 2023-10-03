@@ -10,6 +10,7 @@ services:
     command: wait-for database:3306 -t 120 -- /usr/local/bin/start.sh
     ports:
       - "8081:8081"
+      - "5173:5173"
     volumes:
       - ./app:/home/php/app
     depends_on:

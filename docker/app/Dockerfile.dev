@@ -40,5 +40,6 @@ COPY ./start.sh             /usr/local/bin
 COPY ./laravel-install.sh   /usr/local/bin
 
 EXPOSE 8081
+EXPOSE 5173
 
 CMD [ "/usr/local/bin/start.sh" ]
