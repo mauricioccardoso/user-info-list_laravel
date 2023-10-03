@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use App\Services\UserDataMocky;
 use Illuminate\Http\Request;
@@ -30,6 +31,23 @@ class UserController extends Controller
         DB::beginTransaction();
         try {
             User::create($request->all());
+
+            DB::commit();
+        } catch (\Throwable $errors) {
+            DB::rollBack();
+
+            return redirect()->back()->with($errors);
+        }
+
+        return redirect()->back();
+    }
+
+    public function update(UserUpdateRequest $request)
+    {
+        DB::beginTransaction();
+        try {
+            $user = User::find($request->id);
+            $user->update($request->all());
 
             DB::commit();
         } catch (\Throwable $errors) {
