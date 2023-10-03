@@ -1,8 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="d-flex justify-content-between align-items-center mb-2">
-        <span class="fs-3 text-uppercase">
+    <div class="d-flex justify-content-between align-items-center my-3">
+        <span class="fs-3">
             List of users
         </span>
 
@@ -12,5 +12,5 @@
         </button>
     </div>
 
-    <x-users.table/>
+    <x-users.table :users="$users"/>
 @endsection
