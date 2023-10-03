@@ -58,4 +58,22 @@ class UserController extends Controller
 
         return redirect()->back();
     }
+
+    public function destroy(Request $request)
+    {
+        DB::beginTransaction();
+        try {
+            $user = User::find($request->id);
+
+            $user->delete();
+
+            DB::commit();
+        } catch (\Throwable $errors) {
+            DB::rollBack();
+
+            return redirect()->back()->with($errors);
+        }
+
+        return redirect()->back();
+    }
 }

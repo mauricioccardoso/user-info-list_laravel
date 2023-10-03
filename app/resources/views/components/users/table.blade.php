@@ -20,7 +20,7 @@
                     <div class="d-flex justify-content-evenly align-items-center">
                         <button
                             data-bs-toggle="modal" data-bs-target="#modal-delete"
-                            data-id="{{ $user->name }}" data-name="{{ $user->name }}"
+                            data-id="{{ $user->id }}" data-name="{{ $user->name }}"
                             type="button" class="btn btn-sm btn-danger py-0 me-2">
                             <i class="fa-solid fa-trash"></i>
                         </button>
