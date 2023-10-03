@@ -30,7 +30,7 @@ if [ -e /home/php/app/composer.json ] && [ -e /home/php/app/.env ]; then
   echo -e "\e[32m Migrations completed \e[0m"
 
   echo -e "\e[32m Running the server on port 8081 \e[0m"
-  php artisan serve --host=0.0.0.0 --port=8081
+  php artisan serve --host=0.0.0.0 --port=8081 & npm run dev
 
 elif [ -e /home/php/app/composer.json ] && ! [ -e /home/php/app/.env ]; then
   echo -e "\n\e[33;1m *** Warning - File .env does not exist \e[0m"
