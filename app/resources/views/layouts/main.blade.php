@@ -25,5 +25,7 @@
     <main  class="container p-3">
         @yield('content')
     </main>
+
+    @stack('scripts')
 </body>
 </html>
